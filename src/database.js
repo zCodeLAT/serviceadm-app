@@ -18,6 +18,7 @@ pool.getConnection((err, connection)=> {
       console.error('DATABASE CONNECTION WAS REFUSED');
     }
     console.log('db connection error: '+ err.stack);
+    
     return;
   }
   if (connection) connection.release();

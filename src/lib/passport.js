@@ -4,17 +4,20 @@ const LocalStrategy = require('passport-local').Strategy;
 const pool = require('../database');
 const helpers = require('../lib/helpers');
 
-//Tomamos los datos de local.signup
-passport.use('local.signup', new LocalStrategy({
+//Tomamos los datos de local.register
+passport.use('local.register', new LocalStrategy({
     usernameField:'username',
-    passworfField:'password',
+    passwordfField:'password',
     passReqToCallback: true
 }, async (req, username, password, done)=>{
-    const {fullname}= req.body;
+    const {name, lastname, email, phone}= req.body;
     const newUser = {
         username, //es igual a username: username,
         password,
-        fullname 
+        name,
+        lastname,
+        email,
+        phone 
     };
     const rows = await pool.query('SELECT * FROM users WHERE username = ?',[username]);
     if(rows.length>0){
@@ -28,7 +31,7 @@ passport.use('local.signup', new LocalStrategy({
     }
 }));
 
-passport.use('local.signin', new LocalStrategy({
+passport.use('local.login', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true

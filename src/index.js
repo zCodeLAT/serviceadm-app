@@ -2,16 +2,18 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars'); //motor de plantillas
 const path = require('path');
-const flash = require('connect-flash');
-const session = require('express-session');
+const flash = require('connect-flash'); //mensajes al usuario
+const session = require('express-session'); //Almacenará las sesiones en la base de datos
 const MySqlStore = require('express-mysql-session');
 const passport = require('passport');
 
 const { database } = require('./keys'); //llama conexión keys.js
 
+
 // initializations
 const app = express();
 require('./lib/passport');
+
 
 //settings (3th configuracion de hbs)
 app.set('port', process.env.PORT || 3000);

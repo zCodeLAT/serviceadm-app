@@ -6,7 +6,6 @@ body {
 .index {
     width: 100vw;
     height: 100vh;
-
 }
 .masthead {
     color: white;
@@ -29,4 +28,7 @@ body {
     .masthead h1 {
         font-size: 5.5rem;
     }
+}
+.form-label {
+    text-align: left;
 }
